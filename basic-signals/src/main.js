@@ -1,19 +1,20 @@
 import "../styles/style.css";
 import { signal, effect, computed } from "./signals";
 
-const btn = document.querySelector("button");
+const [count, setCount] = signal(0);
 
-btn.addEventListener("click", () => {
+const button = document.querySelector("button");
+
+button.addEventListener("click", () => {
   setCount(count() + 1);
 });
 
-const [count, setCount] = signal(0);
+effect(() => {
+  button.innerText = count();
+});
+
 const double = computed(() => count() * 2);
 
 effect(() => {
-  btn.innerText = count();
-});
-
-effect(() => {
-  console.log("Double the count is", double());
+  console.log("Double:", double());
 });
