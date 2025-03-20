@@ -15,5 +15,5 @@ effect(() => {
 const double = computed(() => count() * 2);
 
 effect(() => {
-  console.log("Double the count is", double());
+  console.log("double the count is = ", double());
 });
