@@ -1,5 +1,4 @@
-import "../styles/style.css";
-import { signal, effect, computed } from "./signals";
+import { signal, effect, computed } from "./signals.js";
 
 const [count, setCount] = signal(0);
 
@@ -16,5 +15,5 @@ effect(() => {
 const double = computed(() => count() * 2);
 
 effect(() => {
-  console.log("Double:", double());
+  console.log("Double the count is", double());
 });
