@@ -1,13 +1,13 @@
-import { useSignal, type ReadonlySignal } from "@preact/signals-react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
+import { useState } from "react";
 
 function CountButton({
   count,
   onClick,
 }: {
-  count: ReadonlySignal<number>;
+  count: number;
   onClick: () => void;
 }) {
   return (
@@ -18,11 +18,13 @@ function CountButton({
 }
 
 function App() {
-  const count = useSignal(0);
+  const [count, setCount] = useState(0);
 
   const increment = () => {
-    count.value++;
+    setCount(count + 1);
   };
+
+  console.log("render");
 
   return (
     <>
